@@ -76,8 +76,14 @@
                         Email : <b>{{ Auth::user()->email ?? null }}</b><br>
                         Pays : <b>{{ Auth::user()->getPays->nom_fr_fr ?? null }}</b><br>
                         Ville : <b>{{ Auth::user()->ville ?? null }}</b><br>
-                        Localite : <b>{{ Auth::user()->localite ?? null }}</b><br>
-                        Fonction MIDD : <b>{{ Auth::user()->fonction_midd ?? null }}</b><br>
+                        Date Service : <b>{{ Auth::user()->date_prise_service ?? null }}</b><br>
+                        Fonction : <b class="text-right">
+                            @foreach ($fonctions as $value)
+                                @if($value->id == Auth::user()->fonction_midd)
+                                {{ $value->libelle ?? null }}
+                                @endif
+                            @endforeach
+                        </b><br>
                     </div>
                 </div>
             </div>
@@ -119,7 +125,9 @@
                 <h3 class="card-title">FICHE DE PRECOMPTE</h3>
             </div>
             <div class="card-body">
-                <h4 class="d-inline">Pas disponible</h4>
+                <a target="blank" href="{{ route('Admin-ProfilGetPrecompte') }}" >
+                    Imprimer
+                </a>
             </div>
         </div>
     </div>
@@ -129,7 +137,9 @@
                 <h3 class="card-title">FICHE D’ADHESION</h3>
             </div>
             <div class="card-body">
-                <h4 class="d-inline">Pas disponible</h4>
+                <a target="blank" href="{{ route('Admin-ProfilGetAdhesion') }}" >
+                    Imprimer
+                </a>
             </div>
         </div>
     </div>

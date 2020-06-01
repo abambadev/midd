@@ -77,6 +77,46 @@
                             </a>
                         </li>
                         @endpermission
+                        @permission('config-role-show')
+                        <li>
+                            <a href="{{ route('Admin-Config-DirectionGetShow') }}" class="font-weight-bold">
+                                <i class="mdi mdi-chevron-right"></i>
+                                Direction
+                            </a>
+                        </li>
+                        @endpermission
+                        @permission('config-role-show')
+                        <li>
+                            <a href="{{ route('Admin-Config-InspectionGetShow') }}" class="font-weight-bold">
+                                <i class="mdi mdi-chevron-right"></i>
+                                Inspection
+                            </a>
+                        </li>
+                        @endpermission
+                        @permission('config-role-show')
+                        <li>
+                            <a href="{{ route('Admin-Config-SecteurGetShow') }}" class="font-weight-bold">
+                                <i class="mdi mdi-chevron-right"></i>
+                                Secteur Pedagogique
+                            </a>
+                        </li>
+                        @endpermission
+                        @permission('config-role-show')
+                        <li>
+                            <a href="{{ route('Admin-Config-EcoleGetShow') }}" class="font-weight-bold">
+                                <i class="mdi mdi-chevron-right"></i>
+                                Ecole
+                            </a>
+                        </li>
+                        @endpermission
+                        @permission('config-role-show')
+                        <li>
+                            <a href="{{ route('Admin-Config-DocumentGetShow') }}" class="font-weight-bold">
+                                <i class="mdi mdi-chevron-right"></i>
+                                Document
+                            </a>
+                        </li>
+                        @endpermission
                     </ul>
                 </li>
                 @endpermission

@@ -12,9 +12,9 @@
                 <div class="col-12">
                     <div class="page-title-box mb-0 pb-2 pt-3">
                         <h4 class="page-title pt-2">
-                        	Suppression d'une fonction
+                        	Suppression d'une ecole
                         </h4>
-                        <a href="{{ route('Admin-Config-FonctionGetShow') }}" class="btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5 float-right">
+                        <a href="{{ route('Admin-Config-EcoleGetShow') }}" class="btn btn-danger btn-rounded w-md waves-effect waves-light m-b-5 float-right">
                             <i class="mdi mdi-chevron-left"></i>
                             Retour
                         </a>
@@ -39,11 +39,12 @@
 
             <div class="card overflow-hidden">
                 <div class="card-heading bg-danger">
-                    <h3 class="card-title text-white">Suppression de la fonction</h3>
+                    <h3 class="card-title text-white">Suppression d'une école</h3>
                 </div>
                 <div class="card-body p-2 text-center">
-                    <h5>Voulez-vous supprimée définitivement cette fonction ?</h5>
-                    <h5>{{ $fonction->libelle }}</h5>
+                    <h5>Voulez-vous supprimée définitivement cette école ?</h5>
+                    <h3>{{ $ecole->display_name }}</h3>
+                    <h5>{{ $ecole->description }}</h5>
                     <form method="post">
                         @csrf
                         <div class="dropdown-divider mb-3"></div>

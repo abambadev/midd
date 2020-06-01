@@ -119,16 +119,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <div class="col-6">
+                                <div class="col-12">
                                     <div class="form-group">
                                         <input type="text" name="numero_cni" class="form-control" placeholder="Numero CNI" value="{{ old('numero_cni') ? old('numero_cni') : Auth::user()->numero_cni }}" required>
                                         <span class="text-danger">{{ $errors->first('numero_cni') }}</span>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="text" name="localite" class="form-control" placeholder="Localite" value="{{ old('localite') ? old('localite') : Auth::user()->localite }}" required>
-                                        <span class="text-danger">{{ $errors->first('localite') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -151,46 +145,27 @@
                             <div class="form-group row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="text" name="ministere_epn" class="form-control" placeholder="Ministère / EPN" value="{{ old('ministere_epn') ? old('ministere_epn') : Auth::user()->ministere_epn }}" required>
-                                        <span class="text-danger">{{ $errors->first('ministere_epn') }}</span>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="text" name="dren" class="form-control" placeholder="DREN" value="{{ old('dren') ? old('dren') : Auth::user()->dren }}" required>
-                                        <span class="text-danger">{{ $errors->first('dren') }}</span>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="text" name="section_syndicale" class="form-control" placeholder="Section Syndicale" value="{{ old('section_syndicale') ? old('section_syndicale') : Auth::user()->section_syndicale }}" required>
-                                        <span class="text-danger">{{ $errors->first('section_syndicale') }}</span>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="text" name="secteur_pedagogique" class="form-control" placeholder="Secteur Pedagogique" value="{{ old('secteur_pedagogique') ? old('secteur_pedagogique') : Auth::user()->secteur_pedagogique }}" required>
-                                        <span class="text-danger">{{ $errors->first('secteur_pedagogique') }}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <input type="text" name="service" class="form-control" placeholder="Service" value="{{ old('service') ? old('service') : Auth::user()->service }}" required>
+                                        <select name="service" class="form-control" id="input_service" required>
+                                            @foreach ( $ecoles as $value)
+                                                <option @if (old('service') == $value->id ) selected @endif value="{{ $value->id }}">{{ $value->libelle }}</option>
+                                            @endforeach
+                                        </select>
                                         <span class="text-danger">{{ $errors->first('service') }}</span>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <input type="text" name="fonction_midd" class="form-control" placeholder="Fonction MIDD" value="{{ old('fonction_midd') ? old('fonction_midd') : Auth::user()->fonction_midd }}" required>
+
+                                        <select name="fonction_midd" class="form-control" id="input_fonction_midd" required>
+                                            @foreach ( $fonctions as $value)
+                                                <option @if (old('fonction_midd') == $value->id ) selected @endif value="{{ $value->id }}">{{ $value->libelle }}</option>
+                                            @endforeach
+                                        </select>
                                         <span class="text-danger">{{ $errors->first('fonction_midd') }}</span>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="form-group row">
                                 <div class="col-4">
@@ -245,3 +220,40 @@
 @endsection
 
 
+{{--
+
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" name="localite" class="form-control" placeholder="Localite" value="{{ old('localite') ? old('localite') : Auth::user()->localite }}" required>
+                                        <span class="text-danger">{{ $errors->first('localite') }}</span>
+                                    </div>
+                                </div>
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" name="ministere_epn" class="form-control" placeholder="Ministère / EPN" value="{{ old('ministere_epn') ? old('ministere_epn') : Auth::user()->ministere_epn }}" required>
+                                        <span class="text-danger">{{ $errors->first('ministere_epn') }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" name="dren" class="form-control" placeholder="DREN" value="{{ old('dren') ? old('dren') : Auth::user()->dren }}" required>
+                                        <span class="text-danger">{{ $errors->first('dren') }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" name="section_syndicale" class="form-control" placeholder="Section Syndicale" value="{{ old('section_syndicale') ? old('section_syndicale') : Auth::user()->section_syndicale }}" required>
+                                        <span class="text-danger">{{ $errors->first('section_syndicale') }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="text" name="secteur_pedagogique" class="form-control" placeholder="Secteur Pedagogique" value="{{ old('secteur_pedagogique') ? old('secteur_pedagogique') : Auth::user()->secteur_pedagogique }}" required>
+                                        <span class="text-danger">{{ $errors->first('secteur_pedagogique') }}</span>
+                                    </div>
+                                </div>
+                            </div> --}}

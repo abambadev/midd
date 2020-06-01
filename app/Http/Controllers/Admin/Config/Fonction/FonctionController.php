@@ -51,18 +51,18 @@ class FonctionController extends Controller
 
     }
 
-    public function getDelete(Request $request, $id)
+    public function getDelete(Request $request,Fonction $uuid)
     {
 
-        $data['fonction'] = Fonction::findOrFail($id);
+        $data['fonction'] =$uuid;
         return view('page.admin.config.fonction.delete', $data);
 
     }
 
-    public function postDelete(Request $request, $id)
+    public function postDelete(Request $request,Fonction $uuid)
     {
 
-        $role = Fonction::findOrFail($id);
+        $uuid->delete();
 
         $request->session()->flash('MsgFlash', [
             'type' => "success",
@@ -72,18 +72,18 @@ class FonctionController extends Controller
 
     }
 
-    public function getEdite(Request $request, $id)
+    public function getEdite(Request $request,Fonction $uuid)
     {
 
-        $data['fonction'] = Fonction::findOrFail($id);
+        $data['fonction'] = $uuid;
         return view('page.admin.config.fonction.edite', $data);
 
     }
 
-    public function postEdite(Request $request, $id)
+    public function postEdite(Request $request,Fonction $uuid)
     {
 
-        $fonction = Fonction::findOrFail($id);
+        $uuid->update($request->all());
 
         $request->session()->flash('MsgFlash', [
             'type' => "success",

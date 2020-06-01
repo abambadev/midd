@@ -85,6 +85,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
         Route::get('/edite', ['as' => 'Admin-ProfilGetEdite', 'uses' => 'ProfilController@getEdite']);
         Route::post('/edite', ['as' => 'Admin-ProfilPostEdite', 'uses' => 'ProfilController@postEdite']);
+
+        Route::get('/adhesion', ['as' => 'Admin-ProfilGetAdhesion', 'uses' => 'ProfilController@getAdhesion']);
+        Route::get('/precompte', ['as' => 'Admin-ProfilGetPrecompte', 'uses' => 'ProfilController@getPrecompte']);
     });
 
     //------------------------- Page Config -------------------------------//
@@ -137,6 +140,76 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
 
             Route::get('/delete/{uuid}', ['as' => 'Admin-Config-FonctionGetDelete', 'uses' => 'FonctionController@getDelete', 'middleware' => ['permission:config-role-delete']]);
             Route::post('/delete/{uuid}', ['as' => 'Admin-Config-FonctionPostDelete', 'uses' => 'FonctionController@postDelete', 'middleware' => ['permission:config-role-delete']]);
+        });
+
+        //------------------------- Page Config-Ecole -------------------------------//
+        Route::group(['prefix' => 'ecole', 'namespace' => 'Ecole', 'middleware' => ['permission:config-role-*']], function () {
+
+            Route::get('/', ['as' => 'Admin-Config-EcoleGetShow', 'uses' => 'EcoleController@getShow', 'middleware' => ['permission:config-role-show']]);
+
+            Route::get('/create', ['as' => 'Admin-Config-EcoleGetCreate', 'uses' => 'EcoleController@getCreate', 'middleware' => ['permission:config-role-create']]);
+            Route::post('/create', ['as' => 'Admin-Config-EcolePostCreate', 'uses' => 'EcoleController@postCreate', 'middleware' => ['permission:config-role-create']]);
+
+            Route::get('/edite/{uuid}', ['as' => 'Admin-Config-EcoleGetEdite', 'uses' => 'EcoleController@getEdite', 'middleware' => ['permission:config-role-edite']]);
+            Route::post('/edite/{uuid}', ['as' => 'Admin-Config-EcolePostEdite', 'uses' => 'EcoleController@postEdite', 'middleware' => ['permission:config-role-edite']]);
+
+            Route::get('/delete/{uuid}', ['as' => 'Admin-Config-EcoleGetDelete', 'uses' => 'EcoleController@getDelete', 'middleware' => ['permission:config-role-delete']]);
+            Route::post('/delete/{uuid}', ['as' => 'Admin-Config-EcolePostDelete', 'uses' => 'EcoleController@postDelete', 'middleware' => ['permission:config-role-delete']]);
+        });
+
+        //------------------------- Page Config-Secteur -------------------------------//
+        Route::group(['prefix' => 'secteur', 'namespace' => 'Secteur', 'middleware' => ['permission:config-role-*']], function () {
+
+            Route::get('/', ['as' => 'Admin-Config-SecteurGetShow', 'uses' => 'SecteurController@getShow', 'middleware' => ['permission:config-role-show']]);
+
+            Route::get('/create', ['as' => 'Admin-Config-SecteurGetCreate', 'uses' => 'SecteurController@getCreate', 'middleware' => ['permission:config-role-create']]);
+            Route::post('/create', ['as' => 'Admin-Config-SecteurPostCreate', 'uses' => 'SecteurController@postCreate', 'middleware' => ['permission:config-role-create']]);
+
+            Route::get('/edite/{uuid}', ['as' => 'Admin-Config-SecteurGetEdite', 'uses' => 'SecteurController@getEdite', 'middleware' => ['permission:config-role-edite']]);
+            Route::post('/edite/{uuid}', ['as' => 'Admin-Config-SecteurPostEdite', 'uses' => 'SecteurController@postEdite', 'middleware' => ['permission:config-role-edite']]);
+
+            Route::get('/delete/{uuid}', ['as' => 'Admin-Config-SecteurGetDelete', 'uses' => 'SecteurController@getDelete', 'middleware' => ['permission:config-role-delete']]);
+            Route::post('/delete/{uuid}', ['as' => 'Admin-Config-SecteurPostDelete', 'uses' => 'SecteurController@postDelete', 'middleware' => ['permission:config-role-delete']]);
+        });
+
+        //------------------------- Page Config-Inspection -------------------------------//
+        Route::group(['prefix' => 'inspection', 'namespace' => 'Inspection', 'middleware' => ['permission:config-role-*']], function () {
+
+            Route::get('/', ['as' => 'Admin-Config-InspectionGetShow', 'uses' => 'InspectionController@getShow', 'middleware' => ['permission:config-role-show']]);
+
+            Route::get('/create', ['as' => 'Admin-Config-InspectionGetCreate', 'uses' => 'InspectionController@getCreate', 'middleware' => ['permission:config-role-create']]);
+            Route::post('/create', ['as' => 'Admin-Config-InspectionPostCreate', 'uses' => 'InspectionController@postCreate', 'middleware' => ['permission:config-role-create']]);
+
+            Route::get('/edite/{uuid}', ['as' => 'Admin-Config-InspectionGetEdite', 'uses' => 'InspectionController@getEdite', 'middleware' => ['permission:config-role-edite']]);
+            Route::post('/edite/{uuid}', ['as' => 'Admin-Config-InspectionPostEdite', 'uses' => 'InspectionController@postEdite', 'middleware' => ['permission:config-role-edite']]);
+
+            Route::get('/delete/{uuid}', ['as' => 'Admin-Config-InspectionGetDelete', 'uses' => 'InspectionController@getDelete', 'middleware' => ['permission:config-role-delete']]);
+            Route::post('/delete/{uuid}', ['as' => 'Admin-Config-InspectionPostDelete', 'uses' => 'InspectionController@postDelete', 'middleware' => ['permission:config-role-delete']]);
+        });
+
+        //------------------------- Page Config-Direction -------------------------------//
+        Route::group(['prefix' => 'direction', 'namespace' => 'Direction', 'middleware' => ['permission:config-role-*']], function () {
+
+            Route::get('/', ['as' => 'Admin-Config-DirectionGetShow', 'uses' => 'DirectionController@getShow', 'middleware' => ['permission:config-role-show']]);
+
+            Route::get('/create', ['as' => 'Admin-Config-DirectionGetCreate', 'uses' => 'DirectionController@getCreate', 'middleware' => ['permission:config-role-create']]);
+            Route::post('/create', ['as' => 'Admin-Config-DirectionPostCreate', 'uses' => 'DirectionController@postCreate', 'middleware' => ['permission:config-role-create']]);
+
+            Route::get('/edite/{uuid}', ['as' => 'Admin-Config-DirectionGetEdite', 'uses' => 'DirectionController@getEdite', 'middleware' => ['permission:config-role-edite']]);
+            Route::post('/edite/{uuid}', ['as' => 'Admin-Config-DirectionPostEdite', 'uses' => 'DirectionController@postEdite', 'middleware' => ['permission:config-role-edite']]);
+
+            Route::get('/delete/{uuid}', ['as' => 'Admin-Config-DirectionGetDelete', 'uses' => 'DirectionController@getDelete', 'middleware' => ['permission:config-role-delete']]);
+            Route::post('/delete/{uuid}', ['as' => 'Admin-Config-DirectionPostDelete', 'uses' => 'DirectionController@postDelete', 'middleware' => ['permission:config-role-delete']]);
+        });
+
+        //------------------------- Page Config-Document -------------------------------//
+        Route::group(['prefix' => 'document', 'namespace' => 'Document', 'middleware' => ['permission:config-role-*']], function () {
+
+            Route::get('/', ['as' => 'Admin-Config-DocumentGetShow', 'uses' => 'DocumentController@getShow', 'middleware' => ['permission:config-role-show']]);
+
+            Route::get('/adhesion/{uuid}', ['as' => 'Admin-Config-DocumentGetAdhesion', 'uses' => 'DocumentController@getAdhesion']);
+            Route::get('/precompte/{uuid}', ['as' => 'Admin-Config-DocumentGetPrecompte', 'uses' => 'DocumentController@getPrecompte']);
+
         });
 
     });
